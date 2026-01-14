@@ -78,3 +78,18 @@ int str_split(char* input, char delim, char*** output) {
 
     return idx;
 }
+
+int str_reverse(char *input) {
+    if (!input) return -1;
+
+    char temp;
+    int len = strlen(input);
+
+    for (int i = 0; i < len / 2; i++) {
+        temp = input[i];
+        input[i] = input[len - i - 1];
+        input[len - i - 1] = temp;
+    }
+
+    return 0;
+}
