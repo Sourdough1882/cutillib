@@ -93,3 +93,54 @@ int str_reverse(char *input) {
 
     return 0;
 }
+
+int str_trim(char* input) {
+    if (!input) return -1;
+
+    int start = 0, end = strlen(input) - 1;
+
+    while (start <= end && isspace(input[start])) {
+        start++;
+    }
+    
+    while (end >= start && isspace(input[end])) {
+        end--;
+    }
+
+    int new_len = end - start + 1;
+    memmove(input, input + start, new_len);
+    input[new_len] = '\0';
+
+    return 0;
+}
+
+int str_ltrim(char* input) {
+    if (!input) return -1;
+
+    int len = strlen(input);
+
+    int start = 0;
+
+    while (start <= len && isspace(input[start])) {
+        start++;
+    }
+    
+    int new_len = len - start + 1;
+    memmove(input, input + start, new_len);
+    input[new_len] = '\0';
+
+    return 0;
+}
+
+int str_rtrim(char* input) {
+    if (!input) return -1;
+
+    int end = strlen(input) - 1;
+
+    while (end >= 0 && isspace(input[end])) {
+        input[end] = '\0';
+        end--;
+    }
+
+    return 0;
+}
